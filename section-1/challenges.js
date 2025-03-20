@@ -96,9 +96,16 @@ runTest("accessObject() can access a property value using a key", function () {
 function makeAllWordsBold(arr) {
   // In markdown files (e.g. 'README.md') we can denote words as bold by putting two asterisks on either side of them, such as: **hello**
   // This function should take an array of strings as an argument and return an array consisting of the same strings but in bold - ie with two asterisks either side of them
+
+  const newArr = []
+  for (const word of arr){
+   newArr.push(`**${word}**`)
+  }
+
+  return newArr
 }
 
-skipTest(
+runTest(
   "makeAllWordsBold() can convert all strings to be surrounded by double asterisks",
   function () {
     check(makeAllWordsBold(["hello", "there", "world"])).isEqualTo([
@@ -118,9 +125,12 @@ skipTest(
 
 function getPositiveNumbers(arr) {
   // This function should take an array of numbers as an argument and return an array containing all positive numbers from the input (retaining the order)
+
+  return arr.filter(number => number > 0)
+
 }
 
-skipTest(
+runTest(
   "getPositiveNumbers() can get all the positive numbers from an array of numbers",
   function () {
     check(getPositiveNumbers([1, -1, 2, -2, 3, -3])).isEqualTo([1, 2, 3]);

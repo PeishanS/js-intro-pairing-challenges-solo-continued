@@ -8,6 +8,10 @@ The function should return an array containing the names of the people who aren'
 Recent intelligence has revealed that all spies codenames include the letters 's', 'p' or 'y'.
 You can't afford to take any chances, and all names that include those letters should be removed.
   */
+
+
+return people.filter(peopleName => !/[spy]/i.test(peopleName)).sort()
+
 }
 
 console.log("counterSpy()");
@@ -16,7 +20,7 @@ runTest("returns an empty array if the only person is a spy", function () {
   check(counterSpy(["Daryl"])).isEqualTo([]);
 });
 
-skipTest("returns an array with all spys removed", function () {
+runTest("returns an array with all spys removed", function () {
   check(counterSpy(["Daryl", "Harriet", "James"])).isEqualTo(["Harriet"]);
   check(counterSpy(["Chris", "Daryl", "Harriet", "Mauro", "Sam"])).isEqualTo([
     "Harriet",
@@ -30,7 +34,8 @@ EXTRA CREDIT:
 Also, our spy admin team have asked that the names come back in alphabetical order, for spy filing purposes.
 So if you could do that you'd really be saving them a lot of work. Thanks.
 */
-skipTest("returns an array with names in alphabetical order", function () {
+
+runTest("returns an array with names in alphabetical order", function () {
   check(counterSpy(["Sam", "Harriet", "Adrian", "Mauro"])).isEqualTo([
     "Adrian",
     "Harriet",
