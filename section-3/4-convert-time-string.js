@@ -6,6 +6,20 @@ This function should take a string representing a time with hours and minutes se
 Some of the times are written in the 24-hour clock format
 This function should return the time written in the 12-hour clock format
   */
+const [hourStr, minStr] = string.split(":");
+
+const hour = Number(hourStr)
+
+if (hour === 0 || hour === 12){
+  return `12:${minStr}`;
+}
+if (hour < 12) {
+  return  `${hourStr}:${minStr}`;
+}
+if (hour > 12){
+  return `${(hour - 12).toString().padStart(2,"0")}:${minStr}`
+}
+
 }
 
 console.log("convertTimeString()");
@@ -17,11 +31,11 @@ runTest(
   }
 );
 
-skipTest("converts an afternoon time to the 12 hour format", function () {
+runTest("converts an afternoon time to the 12 hour format", function () {
   check(convertTimeString("16:07")).isEqualTo("04:07");
 });
 
-skipTest(
+runTest(
   "converts times in the hour after midnight to the 12 hour format",
   function () {
     check(convertTimeString("00:56")).isEqualTo("12:56");
